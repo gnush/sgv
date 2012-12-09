@@ -18,6 +18,14 @@ edges = []
 obstacles = []
 
 f = open(sys.argv[1])
+
+l = f.readline().split()
+try:
+    width = int(l[0])
+    height = int(l[1])
+except (ValueError, IndexError):
+    exit(2)
+
 for line in f:
     l = line.split()
 
@@ -58,7 +66,7 @@ for line in f:
 
 root = Tk()
 
-w = Canvas(root, width=200, height=200)
+w = Canvas(root, width=width, height=height)
 w.pack()
 
 for e in edges:
