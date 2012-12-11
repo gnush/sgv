@@ -20,10 +20,16 @@ obstacles = []
 f = open(sys.argv[1])
 
 l = f.readline().split()
-try:
-    width = int(l[0])
-    height = int(l[1])
-except (ValueError, IndexError):
+if len(l) > 1:
+    try:
+        width = int(l[0])
+        height = int(l[1])
+        scale = int(l[2])
+    except ValueError:
+        exit(2)
+    except IndexError:
+        scale = 1
+else:
     exit(2)
 
 for line in f:
@@ -43,7 +49,7 @@ for line in f:
         except IndexError:
             b = False
 
-        nodes.append(Node(x, y, b))
+        nodes.append(Node(x, y, b, scale))
     elif l[0] == "Edge":
         try:
             i = int(l[1])
@@ -61,12 +67,12 @@ for line in f:
             print("Cannot parse obstacle")
             continue
 
-        obstacles.append(Obstacle(l[1:]))
+        obstacles.append(Obstacle(l[1:], scale))
 
 
 root = Tk()
 
-w = Canvas(root, width=width, height=height)
+w = Canvas(root, width=width*scale, height=height*scale)
 w.pack()
 
 for e in edges:

@@ -1,9 +1,9 @@
 class Node:
     offset = 5
 
-    def __init__(self, x, y, visited=False):
-        self.x = x
-        self.y = y
+    def __init__(self, x, y, visited=False, scale=1):
+        self.x = x * scale
+        self.y = y * scale
         self.color = "black"
 
         if visited:
