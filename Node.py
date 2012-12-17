@@ -1,5 +1,5 @@
 class Node:
-    offset = 7
+    offset = 8
 
     def __init__(self, x, y, weight=1, visited=False, scale=1):
         self.x = x * scale
