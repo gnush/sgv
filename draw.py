@@ -42,14 +42,22 @@ for line in f:
         try:
             x = int(l[1])
             y = int(l[2])
-            b = str_to_bool(l[3])
-        except ValueError:
+#            b = str_to_bool(l[3])
+        except (ValueError, IndexError):
             print("Cannot parse node")
-            continue
-        except IndexError:
-            b = False
 
-        nodes.append(Node(x, y, b, scale))
+        weight = 1
+        b = False
+        if len(l) > 4:
+            weight = l[3]
+            b = str_to_bool(l[4])
+        elif len(l) > 3:
+            try:
+                weight = int(l[3])
+            except ValueError:
+                b = str_to_bool(l[3])
+
+        nodes.append(Node(x, y, weight, b, scale))
     elif l[0] == "Edge":
         try:
             i = int(l[1])
@@ -57,13 +65,16 @@ for line in f:
         except (ValueError, IndexError):
             print("Cannot parse edge")
 
-        weight = "1"
-        if len(l) > 3:
-            weight = l[3]
-
+        weight = 1
         b = False
         if len(l) > 4:
+            weight = l[3]
             b = str_to_bool(l[4])
+        elif len(l) > 3:
+            try:
+                weight = int(l[3])
+            except ValueError:
+                b = str_to_bool(l[3])
 
         edges.append(Edge(nodes[i], nodes[j], weight, visited=b))
     elif l[0] == "Obstacle":
