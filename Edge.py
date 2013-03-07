@@ -4,7 +4,7 @@ class Edge:
     def __init__(self, n0, n1, weight = 1, visited=False):
         self.start = n0
         self.end = n1
-        self.color = "blue"
+        self.color = "yellow"
         self.weight = weight
 
         if visited:

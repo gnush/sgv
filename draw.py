@@ -65,14 +65,14 @@ for line in f:
         except (ValueError, IndexError):
             print("Cannot parse edge")
 
-        weight = 1
+        weight = ""
         b = False
         if len(l) > 4:
-            weight = int(float(l[3]))
+            weight = str(int(float(l[3])))
             b = str_to_bool(l[4])
         elif len(l) > 3:
             try:
-                weight = int(float(l[3]))
+                weight = str(int(float(l[3])))
             except ValueError:
                 b = str_to_bool(l[3])
 

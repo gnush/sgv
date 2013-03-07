@@ -4,7 +4,7 @@ class Node:
     def __init__(self, x, y, weight=1, visited=False, scale=1):
         self.x = x * scale
         self.y = y * scale
-        self.color = "blue"
+        self.color = "yellow"
         self.weight = weight
 
         if visited:
