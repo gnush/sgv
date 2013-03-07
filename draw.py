@@ -68,11 +68,11 @@ for line in f:
         weight = 1
         b = False
         if len(l) > 4:
-            weight = l[3]
+            weight = int(float(l[3]))
             b = str_to_bool(l[4])
         elif len(l) > 3:
             try:
-                weight = int(l[3])
+                weight = int(float(l[3]))
             except ValueError:
                 b = str_to_bool(l[3])
 
