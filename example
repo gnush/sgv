@@ -1,7 +1,7 @@
-200 150 2 # width height [scale]
+200 150 2 # canvas width height [scale]
 [[Nodes]]
 # x y [weight] [visited]
-Node 150 75 10.12
+Node 150 75 10.12 # decimal weights on nodes will be rounded down to the nearest integer
 Node 50 50 True
 Node 100 100
 Node 125 25 15 True
